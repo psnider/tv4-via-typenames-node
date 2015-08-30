@@ -54,7 +54,7 @@ schemas_ready_promise.then(function (result) {
 # Running the Example
 This example runs in the development setup, as it uses the schemas that are part of the git repo, which are not included in the npm package. So first, clone the git repo:
 ```
-git clone git@bitbucket.org:psnider/tv4-via-typenames-node.git
+git clone git@github.com:psnider/tv4-via-typenames-node.git
 ```
 You must then install the required npm packages:
 ```

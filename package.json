@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://psnider@bitbucket.org/psnider/tv4-via-typenames-node.git"
+    "url" : "https://github.com/psnider/tv4-via-typenames-node.git"
   },
   "author": {
     "name": "Peter Snider"
   },
   "license": "MIT",
   "dependencies": {
-    "tv4-via-typenames": "git+ssh://git@bitbucket.org/psnider/tv4-via-typenames.git"
+    "tv4-via-typenames": "0.1.0"
   },
   "files": [
     "decl/tv4-via-typenames/tv4-via-typenames-node.d.ts",
