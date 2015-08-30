@@ -1,0 +1,32 @@
+{
+  "name": "tv4-via-typenames-node",
+  "version": "0.1.0",
+  "description": "A wrapper for node.js around tv4-via-typenames that uses local schema files.",
+  "main": "./commonjs/tv4-via-typenames-node.js",
+  "private": false,
+  "scripts": {
+    "test": "make test",
+    "postinstall": "make npm-postinstall",
+    "uninstall": "make npm-uninstall"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://psnider@bitbucket.org/psnider/tv4-via-typenames-node.git"
+  },
+  "author": {
+    "name": "Peter Snider"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "tv4-via-typenames": "git+ssh://git@bitbucket.org/psnider/tv4-via-typenames.git"
+  },
+  "files": [
+    "decl/tv4-via-typenames/tv4-via-typenames-node.d.ts",
+    "commonjs/tv4-via-typenames-node.js",
+    "package.json",
+    "Makefile"
+  ],
+  "devDependencies": {
+    "chai": "3.2.0"
+  }
+}
