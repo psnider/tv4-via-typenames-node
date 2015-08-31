@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "test": "make test",
-    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./commonjs/*.tests.js",
+    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./commonjs/tv4-via-typenames-node.tests.js",
     "postinstall": "make npm-postinstall",
     "uninstall": "make npm-uninstall",
     "preversion": "npm test",
