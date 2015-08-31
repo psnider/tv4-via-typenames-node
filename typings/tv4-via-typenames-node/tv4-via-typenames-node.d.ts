@@ -27,11 +27,5 @@ declare module "tv4-via-typenames-node" {
         loadRequiredSchema(query_typenames : string | string[]) : Promise<tv4vtn.ILoadSchemaResultIndex>;
         // Validates an instance of a type against its schema which previously loaded via loadRequiredSchema().
         validate(typename, instance) : TV4MultiResult;
-        
-        // only exported for testing
-        hasSchema(typename : string) : boolean;
-        // only exported for testing
-        // Returns the named schema only if it is already loaded, otherwise undefined.
-        getLoadedSchema(typename : string) : tv4vtn.ISchema;
     }
 }

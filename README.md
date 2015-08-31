@@ -78,32 +78,38 @@ tv4-via-typenames-node does not:
 
 
 # API
-To validate data as type instances against their schema, run these operations:
+These are the main components of the API.
+You can find the full API in the [TypeScript declaration file](typings/tv4-via-typenames-node/tv4-via-typenames-node.d.ts) for this module.
 
-- construct an instance of this module  
+The function signatures are given with their TypeScript type annotations.
+These examples assume that tv4-via-typenames-node's SchemaFiles class has been loaded into variable *SchemaFiles*.
+
+- ```constructor(args: IConfig)```  
+  Construct an instance of this module  
   The constructor is synchronous.  
   ```
-  let schema_files = new SchemaFiles({schemasDir: './test/data/schemas'});
+  let schemaFiles = new SchemaFiles({schemasDir: './test/data/schemas'});
   ```  
-- initialize it  
+- ```init() : Promise<void>```  
+  Initialize the instance.
   The initialization is asynchronous.  
   ```
-  let init_promise = schema_files.init();
+  let init_promise = schemaFiles.init();
   ```  
-- Call loadRequiredSchema() with a list of the top-level type names of the schema you will use.  
-  You may load the schema after the init()'s promise resolves:  
+- ```loadRequiredSchema(query_typenames : string | string[]) : Promise<tv4vtn.ILoadSchemaResultIndex>```  
+  Call loadRequiredSchema() with a list of the top-level type names of the schema you will use.  
+  You may call this after init()'s promise resolves:  
   ```
-  let load_promise = schema_files.loadRequiredSchema(['SomeRequest', 'Person']);
+  let loadPromise = schemaFiles.loadRequiredSchema(['UUID', 'Person']);
   ```
   This will also recursively load any schema referenced by the named schema.  
-- Call validate() to validate a data object.
-  You may validate data of any of the types referenced by schema requested by loadRequiredSchema(),
+- ```validate(typename, instance) : TV4MultiResult```  
+  Call validate() to validate a data object.
+  You may validate data of any of the types referenced by schema loaded by loadRequiredSchema(),
   after loadRequiredSchema()'s promise resolves.  
   ```
-  let validity = schema_files.validate('Person', some_person);
+  let validity = schemaFiles.validate('EmailAddress', some_email_address);
   ```
-
-See the [TypeScript declaration file](typings/tv4-via-typenames-node/tv4-via-typenames-node.d.ts) for the full API.
 
 See the tests for more examples of usage.
 
@@ -139,19 +145,16 @@ it will install its TypeScript declaration files into that module's *./typings* 
 You only need to do this if you will be building (developing) tv4-via-typenames-node.
 
 ## Simple Setup
+This module is built with TypeScript 1.5, so you must have it installed in order to build.
+**npm install** will install *TypeScript* and *tsd* locally.
+See [http://www.typescriptlang.org/#Download](http://www.typescriptlang.org/#Download)
 
-This module is built with TypeScript 1.5, so you must have it installed in order to build. See [http://www.typescriptlang.org/#Download](http://www.typescriptlang.org/#Download)
-You do not need TypeScript in order to use this module,
-as the code that makes up the distribution is all javascript.
+(You do not need TypeScript in order to use this module,
+as the code that makes up the distribution is all javascript.)
 
-You can install TypeScript globally:
+Start by cloning from git:
 ```
-npm install -g typescript
-```
-
-Then clone from git:
-```
-git clone git@github.com:psnider/tv4-via-typenames-node.git
+git clone git@github.com:psnider/tv4-via-typenames.git
 ```
 
 This code expects that ./commonjs is on node's load path:
@@ -163,6 +166,7 @@ And prepare your new repo for building with:
 ```
 make setup
 ```
+
 ## Full Environment Setup
 See our full instructions for setting up a [MEAN stack + TypeScript](https://github.com/psnider/setup-mean-ts) enviroment,
 and setup the parts you want to use. We use Atom.
@@ -186,7 +190,8 @@ make
 
 # Test
 
-The test-runner is mocha, so you should probably have that installed globally:
+**npm install** will install *mocha* and *chai* locally.
+
 ```
 npm install -g mocha
 ```

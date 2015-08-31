@@ -30,7 +30,6 @@ describe('tv4-via-typenames-node', function () {
     describe('init', function () {
         
         it("+ should load Draft-04 schema", function (done) {
-            debugger
             schema_files.init().then(
                 () => {
                     expect(schema_files.hasSchema(SchemaFiles.DRAFT_SCHEMA_TYPENAME)).to.be.true;

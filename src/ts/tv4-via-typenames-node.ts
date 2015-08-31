@@ -51,7 +51,7 @@ export class SchemaFiles {
     }
 
 
-    readSchemaFileFromTypename(typename) : Promise<{filename: string, schema: tv4vtn.ISchema}> {
+    private readSchemaFileFromTypename(typename) : Promise<{filename: string, schema: tv4vtn.ISchema}> {
         var filename = SchemaFiles.getSchemaFilenameFromTypename(typename);
         return readJSONFile(filename).then(
             (result) => {
@@ -95,7 +95,7 @@ export class SchemaFiles {
     // This also loads the schema for the schema specification itself, if not already loaded.
     init() : Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            let schema = tv4vtn.getLoadedSchema(SchemaFiles.DRAFT_SCHEMA_TYPENAME);
+            let schema = tv4vtn.test.getLoadedSchema(SchemaFiles.DRAFT_SCHEMA_TYPENAME);
             if (schema) {
                 resolve();
             } else {
@@ -110,14 +110,13 @@ export class SchemaFiles {
     }
 
 
-    hasSchema(typename : string) : boolean {
-        return tv4vtn.hasSchema(typename);
+    private hasSchema(typename : string) : boolean {
+        return tv4vtn.test.hasSchema(typename);
     }
 
 
-    getLoadedSchema(typename : string) : tv4vtn.ISchema {
-        return tv4vtn.getLoadedSchema(typename);
+    private getLoadedSchema(typename : string) : tv4vtn.ISchema {
+        return tv4vtn.test.getLoadedSchema(typename);
     }
-
 }
 

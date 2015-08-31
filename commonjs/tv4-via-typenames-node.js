@@ -69,7 +69,7 @@ var SchemaFiles = (function () {
     // This also loads the schema for the schema specification itself, if not already loaded.
     SchemaFiles.prototype.init = function () {
         return new Promise(function (resolve, reject) {
-            var schema = tv4vtn.getLoadedSchema(SchemaFiles.DRAFT_SCHEMA_TYPENAME);
+            var schema = tv4vtn.test.getLoadedSchema(SchemaFiles.DRAFT_SCHEMA_TYPENAME);
             if (schema) {
                 resolve();
             }
@@ -82,10 +82,10 @@ var SchemaFiles = (function () {
         });
     };
     SchemaFiles.prototype.hasSchema = function (typename) {
-        return tv4vtn.hasSchema(typename);
+        return tv4vtn.test.hasSchema(typename);
     };
     SchemaFiles.prototype.getLoadedSchema = function (typename) {
-        return tv4vtn.getLoadedSchema(typename);
+        return tv4vtn.test.getLoadedSchema(typename);
     };
     SchemaFiles.DRAFT_SCHEMA_TYPENAME = tv4vtn.DRAFT_SCHEMA_TYPENAME;
     SchemaFiles.SCHEMA_FILENAME_REGEXP = '^([a-zA-Z0-9][-_a-zA-Z0-9]*).schema.json$';
