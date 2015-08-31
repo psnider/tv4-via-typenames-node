@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url" : "https://github.com/psnider/tv4-via-typenames-node.git"
+    "url": "https://github.com/psnider/tv4-via-typenames-node.git"
   },
   "author": {
     "name": "Peter Snider"
@@ -27,6 +27,9 @@
     "Makefile"
   ],
   "devDependencies": {
-    "chai": "3.2.0"
+    "chai": "3.2.0",
+    "mocha": "^2.3.0",
+    "tsd": "^0.6.4",
+    "typescript": "^1.5.3"
   }
 }
