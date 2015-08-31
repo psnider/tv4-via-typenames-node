@@ -81,17 +81,24 @@ tv4-via-typenames-node does not:
 To validate data as type instances against their schema, run these operations:
 
 - construct an instance of this module  
+  The constructor is synchronous.
   ```
-  let schema_files = new SchemaFiles(null, done);
+  let schema_files = new SchemaFiles({schemasDir: './test/data/schemas'});
+  ```  
+- initialize it  
+  The initialization is asynchronous.
+  ```
+  let init_promise = schema_files.init();
   ```  
 - Call loadRequiredSchema() with a list of the top-level type names of the schema you will use.  
-  You may load the schema after the constructor's *done* callback is called:  
+  You may load the schema after the init()'s promise resolves:  
   ```
-  let promise = schema_files.loadRequiredSchema(['SomeRequest', 'Person']);
+  let load_promise = schema_files.loadRequiredSchema(['SomeRequest', 'Person']);
   ```
   This will also recursively load any schema referenced by the named schema.  
 - Call validate() to validate a data object.
-  After the loadRequiredSchema() call resolves, you may validate data of any of the types referenced by those schema.  
+  You may validate data of any of the types referenced by schema requested by loadRequiredSchema(),
+  after loadRequiredSchema()'s promise resolves.  
   ```
   let validity = schema_files.validate('Person', some_person);
   ```
