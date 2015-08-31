@@ -81,12 +81,12 @@ tv4-via-typenames-node does not:
 To validate data as type instances against their schema, run these operations:
 
 - construct an instance of this module  
-  The constructor is synchronous.
+  The constructor is synchronous.  
   ```
   let schema_files = new SchemaFiles({schemasDir: './test/data/schemas'});
   ```  
 - initialize it  
-  The initialization is asynchronous.
+  The initialization is asynchronous.  
   ```
   let init_promise = schema_files.init();
   ```  
