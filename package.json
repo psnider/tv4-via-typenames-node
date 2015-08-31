@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "tv4-via-typenames": "0.1.0"
+    "tv4-via-typenames": "^0.1.0"
   },
   "files": [
     "typings/tv4-via-typenames/tv4-via-typenames-node.d.ts",
