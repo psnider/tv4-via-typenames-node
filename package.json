@@ -21,7 +21,7 @@
     "tv4-via-typenames": "0.1.0"
   },
   "files": [
-    "decl/tv4-via-typenames/tv4-via-typenames-node.d.ts",
+    "typings/tv4-via-typenames/tv4-via-typenames-node.d.ts",
     "commonjs/tv4-via-typenames-node.js",
     "package.json",
     "Makefile"

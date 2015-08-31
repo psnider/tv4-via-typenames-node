@@ -1,7 +1,4 @@
 PACKAGE_NAME=tv4-via-typenames-node
-DEFINITELY_TYPED=~/devel/reference/borisyankov/DefinitelyTyped
-
-
 
 
 all: build test
@@ -13,6 +10,8 @@ test: test-commonjs
 setup:
 	npm install
 	make install-decls
+	git checkout typings/tv4/tv4.d.ts
+
 
 .PHONY: clean
 clean:
@@ -31,27 +30,22 @@ echo:
 npm-postinstall:
 	@if [ -f '../../package.json' ]; then \
 		echo This is a dependent package, copying Typescript declaration files into main project... ;\
-		mkdir -p ../../decl ;\
-		cp -r decl/$(PACKAGE_NAME) ../../decl;\
+		mkdir -p ../../typings ;\
+		cp -r typings/$(PACKAGE_NAME) ../../typings;\
 	fi
 
 # if this uninstall is for a dependent package
 #     remove the declaration files from the containing project
 npm-uninstall:
 	@if [ -f '../../package.json' ]; then \
-		rm -fr ../../decl/$(PACKAGE_NAME);\
+		rm -fr ../../typings/$(PACKAGE_NAME);\
 	fi
 
-dev_decls=chai mocha
-dependent_decls=node es6-promise
 
 install-decls:
-	mkdir -p decl
-	$(foreach package, $(dev_decls), rm -fr decl/$(package); cp -r $(DEFINITELY_TYPED)/$(package) decl;)
-	$(foreach package, $(dependent_decls), rm -fr decl/$(package); cp -r $(DEFINITELY_TYPED)/$(package) decl;)
+	tsd install
 
-
-decl_files=$(wildcard decl/tv4-via-typenames-node/*.d.ts)
+decl_files=$(wildcard typings/tv4-via-typenames-node/*.d.ts)
 
 commonjs/%.js: src/ts/%.ts $(decl_files)
 	tsc --noEmitOnError --module commonjs --outDir generated $<

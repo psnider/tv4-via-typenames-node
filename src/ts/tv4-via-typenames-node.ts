@@ -1,7 +1,7 @@
-/// <reference path='../../decl/tv4-via-typenames-node/tv4-via-typenames-node.d.ts' />
-/// <reference path='../../decl/tv4-via-typenames/tv4-via-typenames.d.ts' />
-/// <reference path='../../decl/node/node.d.ts' />
-/// <reference path="../../decl/es6-promise/es6-promise.d.ts" />
+/// <reference path='../../typings/tv4-via-typenames-node/tv4-via-typenames-node.d.ts' />
+/// <reference path='../../typings/tv4-via-typenames/tv4-via-typenames.d.ts' />
+/// <reference path='../../typings/node/node.d.ts' />
+/// <reference path="../../typings/es6-promise/es6-promise.d.ts" />
 
 
 import fs                               = require('fs');

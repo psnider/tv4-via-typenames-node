@@ -94,7 +94,7 @@ To validate data as type instances against their schema, run these operations:
   let validity = schema_files.validate('Person', some_person);
   ```
 
-See the [TypeScript decl file](decl/tv4-via-typenames-node/tv4-via-typenames-node.d.ts) for the full API.
+See the [TypeScript declaration file](typings/tv4-via-typenames-node/tv4-via-typenames-node.d.ts) for the full API.
 
 See the tests for more examples of usage.
 
@@ -123,7 +123,7 @@ Dependencies
 
 ## Installing as a Dependency of Another Module
 If you install this package as a dependency of another module, 
-it will install its TypeScript declaration files into that module's *./decl* directory, using the npm script *npm-postinstall*.
+it will install its TypeScript declaration files into that module's *./typings* directory, using the npm script *npm-postinstall*.
 
 
 # Build Setup
