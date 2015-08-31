@@ -12,6 +12,13 @@ declare module "tv4-via-typenames-node" {
         schemasDir: string;
     }
 
+    export interface TestFunctions {
+        getSchemaFilenameFromTypename: (typename : string) => string;
+        getTypenameFromSchemaFilename: (pathname : string) => string;
+        hasSchema: (typename : string) => boolean;
+        getLoadedSchema: (typename : string) => tv4vtn.ISchema;
+    }
+
     // Manages loading schema files via type name
     export class SchemaFiles {
         static DRAFT_SCHEMA_TYPENAME: string;
@@ -27,5 +34,7 @@ declare module "tv4-via-typenames-node" {
         loadRequiredSchema(query_typenames : string | string[]) : Promise<tv4vtn.ILoadSchemaResultIndex>;
         // Validates an instance of a type against its schema which previously loaded via loadRequiredSchema().
         validate(typename, instance) : TV4MultiResult;
+                
+        test: TestFunctions;
     }
 }

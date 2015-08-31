@@ -30,13 +30,19 @@ var SchemaFiles = (function () {
         SchemaFiles.schemasDir = args.schemasDir;
         var config = { getSchemaFromTypename: this.readSchemaFileFromTypename };
         tv4vtn.configure(config);
+        this.test = {
+            getSchemaFilenameFromTypename: SchemaFiles.getSchemaFilenameFromTypename,
+            getTypenameFromSchemaFilename: SchemaFiles.getTypenameFromSchemaFilename,
+            hasSchema: this.hasSchema,
+            getLoadedSchema: this.getLoadedSchema
+        };
     }
     SchemaFiles.getSchemaFilenameFromTypename = function (typename) {
         return SchemaFiles.schemasDir + '/' + typename + ".schema.json";
     };
     SchemaFiles.getTypenameFromSchemaFilename = function (pathname) {
         var filename = path.basename(pathname);
-        var m = filename.match(this.SCHEMA_FILENAME_REGEXP);
+        var m = filename.match(SchemaFiles.SCHEMA_FILENAME_REGEXP);
         return ((m != null) ? m[1] : null);
     };
     SchemaFiles.prototype.readSchemaFileFromTypename = function (typename) {

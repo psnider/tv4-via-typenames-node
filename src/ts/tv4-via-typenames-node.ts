@@ -37,16 +37,17 @@ export class SchemaFiles {
     static DRAFT_SCHEMA_TYPENAME = tv4vtn.DRAFT_SCHEMA_TYPENAME;
     private static SCHEMA_FILENAME_REGEXP = '^([a-zA-Z0-9][-_a-zA-Z0-9]*).schema.json$';
     private static schemasDir: string;
+    test: tv4vtnNode.TestFunctions;
 
 
-    static getSchemaFilenameFromTypename(typename : string) : string {
+    private static getSchemaFilenameFromTypename(typename : string) : string {
         return SchemaFiles.schemasDir + '/' + typename + ".schema.json";
     }
 
 
-    static getTypenameFromSchemaFilename(pathname : string) : string {
+    private static getTypenameFromSchemaFilename(pathname : string) : string {
         var filename = path.basename(pathname);
-        var m = filename.match(this.SCHEMA_FILENAME_REGEXP);
+        var m = filename.match(SchemaFiles.SCHEMA_FILENAME_REGEXP);
         return ((m != null) ? m[1] : null);
     }
 
@@ -89,6 +90,13 @@ export class SchemaFiles {
         SchemaFiles.schemasDir = args.schemasDir;
         let config : tv4vtn.ISchemasConfig = {getSchemaFromTypename: this.readSchemaFileFromTypename};
         tv4vtn.configure(config);
+    
+        this.test = {
+            getSchemaFilenameFromTypename: SchemaFiles.getSchemaFilenameFromTypename,
+            getTypenameFromSchemaFilename: SchemaFiles.getTypenameFromSchemaFilename,
+            hasSchema: this.hasSchema,
+            getLoadedSchema: this.getLoadedSchema
+        }
     }
         
 
@@ -118,5 +126,6 @@ export class SchemaFiles {
     private getLoadedSchema(typename : string) : tv4vtn.ISchema {
         return tv4vtn.test.getLoadedSchema(typename);
     }
+    
 }
 

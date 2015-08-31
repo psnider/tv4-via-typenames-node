@@ -22,6 +22,17 @@ describe('tv4-via-typenames-node', function () {
             }, function (error) { done(error); });
         });
     });
+    describe('getSchemaFilenameFromTypename', function () {
+        it("+ should get the filename for a typename's schema", function () {
+            expect(schema_files.test.getSchemaFilenameFromTypename('A')).to.equal('./test/data/schemas/A.schema.json');
+        });
+    });
+    describe('getTypenameFromSchemaFilename', function () {
+        it("+ should get the filename for a typename's schema", function () {
+            debugger;
+            expect(schema_files.test.getTypenameFromSchemaFilename('./test/data/schemas/A.schema.json')).to.equal('A');
+        });
+    });
     describe('loadRequiredSchema', function () {
         it("+ should load a valid simple schema without references to other schema", function (done) {
             schema_files.loadRequiredSchema('UUID').then(function (result) {
