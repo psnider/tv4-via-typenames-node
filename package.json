@@ -1,6 +1,6 @@
 {
   "name": "tv4-via-typenames-node",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A wrapper for node.js around tv4-via-typenames that uses local schema files.",
   "main": "./commonjs/tv4-via-typenames-node.js",
   "private": false,
