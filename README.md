@@ -1,6 +1,7 @@
 # tv4-via-typenames-node
 [![NPM version](http://img.shields.io/npm/v/tv4-via-typenames-node.svg)](https://www.npmjs.org/package/tv4-via-typenames-node)
 [![Build Status via Travis CI](https://travis-ci.org/psnider/tv4-via-typenames-node.svg?branch=master)](https://travis-ci.org/psnider/tv4-via-typenames-node)
+[![Coverage Status](https://coveralls.io/repos/psnider/tv4-via-typenames-node/badge.svg?branch=master&service=github)](https://coveralls.io/github/psnider/tv4-via-typenames-node?branch=master)
 
 # Overview
 tv4-via-typenames-node provides a typename-oriented schema loading and validation system for node.
