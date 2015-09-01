@@ -133,6 +133,7 @@ You may use this module directly as a commonjs module.
 
 Dependencies
 
+- es5
 - es6 promises
 - tv4
 
