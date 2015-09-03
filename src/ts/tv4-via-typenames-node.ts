@@ -52,7 +52,7 @@ export class SchemaFiles {
     }
 
 
-    private readSchemaFileFromTypename(typename) : Promise<{filename: string, schema: tv4vtn.ISchema}> {
+    private readSchemaFileFromTypename(typename) : Promise<{filename: string, schema: tv4.JsonSchema}> {
         var filename = SchemaFiles.getSchemaFilenameFromTypename(typename);
         return readJSONFile(filename).then(
             (result) => {
@@ -70,7 +70,7 @@ export class SchemaFiles {
     // @param query_typenames May be either a string, or an array of strings
     //   If an array, then the first typename is the main one.
     //
-    loadRequiredSchema(query_typenames : any) : Promise<tv4vtn.ILoadSchemaResultIndex> {
+    loadRequiredSchema(query_typenames : any) : Promise<tv4vtn.LoadSchemaResultIndex> {
         return tv4vtn.loadRequiredSchema(query_typenames);
     }
 
@@ -80,7 +80,7 @@ export class SchemaFiles {
     // @param query_typenames May be either a string, or an array of strings
     //   If an array, then the first typename is the main one.
     //
-    validate(typename, instance) : TV4MultiResult {
+    validate(typename, instance) : tv4.MultiResult {
         return tv4vtn.validate(typename, instance);
     }
 
@@ -88,7 +88,7 @@ export class SchemaFiles {
     // This may only be created once.
     constructor(args: tv4vtnNode.IConfig) {
         SchemaFiles.schemasDir = args.schemasDir;
-        let config : tv4vtn.ISchemasConfig = {getSchemaFromTypename: this.readSchemaFileFromTypename};
+        let config : tv4vtn.SchemasConfig = {getSchemaFromTypename: this.readSchemaFileFromTypename};
         tv4vtn.configure(config);
     
         this.test = {
@@ -123,7 +123,7 @@ export class SchemaFiles {
     }
 
 
-    private getLoadedSchema(typename : string) : tv4vtn.ISchema {
+    private getLoadedSchema(typename : string) : tv4.JsonSchema {
         return tv4vtn.test.getLoadedSchema(typename);
     }
     

@@ -16,7 +16,7 @@ declare module "tv4-via-typenames-node" {
         getSchemaFilenameFromTypename: (typename : string) => string;
         getTypenameFromSchemaFilename: (pathname : string) => string;
         hasSchema: (typename : string) => boolean;
-        getLoadedSchema: (typename : string) => tv4vtn.ISchema;
+        getLoadedSchema: (typename : string) => tv4.JsonSchema;
     }
 
     // Manages loading schema files via type name
@@ -31,9 +31,9 @@ declare module "tv4-via-typenames-node" {
         // Loads the schemas for the types you will be using.
         // This walks the dependencies of the provided schema, and loads any referenced schemas.
         // The promise resolves if all of the schema are loaded and registered.
-        loadRequiredSchema(query_typenames : string | string[]) : Promise<tv4vtn.ILoadSchemaResultIndex>;
+        loadRequiredSchema(query_typenames : string | string[]) : Promise<tv4vtn.LoadSchemaResultIndex>;
         // Validates an instance of a type against its schema which previously loaded via loadRequiredSchema().
-        validate(typename, instance) : TV4MultiResult;
+        validate(typename, instance) : tv4.MultiResult;
                 
         test: TestFunctions;
     }

@@ -97,14 +97,14 @@ These examples assume that tv4-via-typenames-node's SchemaFiles class has been l
   ```
   let init_promise = schemaFiles.init();
   ```  
-- ```loadRequiredSchema(query_typenames : string | string[]) : Promise<tv4vtn.ILoadSchemaResultIndex>```  
+- ```loadRequiredSchema(query_typenames : string | string[]) : Promise<tv4vtn.LoadSchemaResultIndex>```  
   Call loadRequiredSchema() with a list of the top-level type names of the schema you will use.  
   You may call this after init()'s promise resolves:  
   ```
   let loadPromise = schemaFiles.loadRequiredSchema(['UUID', 'Person']);
   ```
   This will also recursively load any schema referenced by the named schema.  
-- ```validate(typename, instance) : TV4MultiResult```  
+- ```validate(typename, instance) : tv4.MultiResult```  
   Call validate() to validate a data object.
   You may validate data of any of the types referenced by schema loaded by loadRequiredSchema(),
   after loadRequiredSchema()'s promise resolves.  

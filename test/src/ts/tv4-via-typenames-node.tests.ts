@@ -65,7 +65,7 @@ describe('tv4-via-typenames-node', function () {
                         
         it("+ should load a valid simple schema without references to other schema", function (done) {
             schema_files.loadRequiredSchema('UUID').then(
-                (result : tv4vtn.ILoadSchemaResultIndex) => {
+                (result : tv4vtn.LoadSchemaResultIndex) => {
                     expect(result).to.have.property('UUID');
                     let load_result = result['UUID'];
                     expect(load_result.typename).to.equal('UUID');
@@ -81,7 +81,7 @@ describe('tv4-via-typenames-node', function () {
         
         it("+ should return an error for an invalid schema", function (done) {
             schema_files.loadRequiredSchema('test-invalid-type').then(
-                (result : tv4vtn.ILoadSchemaResultIndex) => {
+                (result : tv4vtn.LoadSchemaResultIndex) => {
                     done(new Error('test-invalid-type should have failed'));
                 },
                 (error) => {
@@ -95,7 +95,7 @@ describe('tv4-via-typenames-node', function () {
         it("+ should not load an invalid schema", (done) => {
             expect(schema_files.hasSchema('test-invalid-type')).to.be.false;
             schema_files.loadRequiredSchema('test-invalid-type').then(
-                (result : tv4vtn.ILoadSchemaResultIndex) => {
+                (result : tv4vtn.LoadSchemaResultIndex) => {
                     done(new Error('test-invalid-type should have failed'));
                 },
                 (error) => {
@@ -108,7 +108,7 @@ describe('tv4-via-typenames-node', function () {
 
         it("+ should return an error for a missing schema file", (done) => {
             schema_files.loadRequiredSchema('test-no-schema-file').then(
-                (result : tv4vtn.ILoadSchemaResultIndex) => {
+                (result : tv4vtn.LoadSchemaResultIndex) => {
                     done(new Error('test-invalid-type should have failed'));
                 },
                 (error) => {
@@ -127,7 +127,7 @@ describe('tv4-via-typenames-node', function () {
             let count = 0;
             const cached = tv4vtn.validate;
             {
-                tv4vtn.validate = (typename: string, query: any) : TV4MultiResult => {count++;  return null;}
+                tv4vtn.validate = (typename: string, query: any) : tv4.MultiResult => {count++;  return null;}
                 schema_files.validate('test-no-op', {});
                 expect(count).to.equal(1);
             }
