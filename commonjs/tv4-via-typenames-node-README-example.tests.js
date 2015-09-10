@@ -15,7 +15,7 @@ describe('example from README.md', function () {
             expect(validity.valid).to.be.true;
             if (validity.valid != true) {
                 succeeded = false;
-                console.log('should be false, but validity.valid=' + validity.valid);
+                console.log('should be true, but validity.valid=' + validity.valid);
             }
             validity = schema_files.validate('ASHBC', { hello: 'hello' });
             expect(validity.valid).to.be.false;
