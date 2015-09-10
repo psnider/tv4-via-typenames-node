@@ -34,7 +34,7 @@ function main() {
     var validity = schema_files.validate('ASHBC', 'hello');
     if (validity.valid != true) {
         succeeded = false;
-        console.log('should be false, but validity.valid=' + validity.valid);
+        console.log('should be true, but validity.valid=' + validity.valid);
     }
     validity = schema_files.validate('ASHBC', { hello: 'hello' });
     if (validity.valid != false) {

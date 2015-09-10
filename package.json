@@ -1,6 +1,6 @@
 {
   "name": "tv4-via-typenames-node",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A wrapper for node.js around tv4-via-typenames that uses local schema files.",
   "keywords": [
     "tv4",
@@ -33,7 +33,7 @@
     "tv4-via-typenames": "^0.1.4"
   },
   "files": [
-    "typings/tv4-via-typenames/tv4-via-typenames-node.d.ts",
+    "typings/tv4-via-typenames-node/tv4-via-typenames-node.d.ts",
     "commonjs/tv4-via-typenames-node.js",
     "package.json",
     "Makefile"
