@@ -24,6 +24,7 @@
     "files": [
         "./typings/chai/chai.d.ts",
         "./typings/es6-promise/es6-promise.d.ts",
+        "./typings/json-file/json-file.d.ts",
         "./typings/mocha/mocha.d.ts",
         "./typings/node/node.d.ts",
         "./typings/tsd.d.ts",

@@ -30,6 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "json-file": "git+ssh://git@github.com/psnider/json-file.git",
     "tv4-via-typenames": "^0.1.4"
   },
   "files": [
