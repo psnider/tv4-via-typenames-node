@@ -5,10 +5,11 @@
 
 
 declare module "tv4-via-typenames-node" {
-    
+
     import tv4vtn = require('tv4-via-typenames');
-    
-    export interface IConfig {
+
+    export interface Config {
+        // the directory in which the schemas reside
         schemasDir: string;
     }
 
@@ -23,9 +24,9 @@ declare module "tv4-via-typenames-node" {
     export class SchemaFiles {
         static DRAFT_SCHEMA_TYPENAME: string;
         schemas: tv4vtn.IndexedSchemas;
-        
+
         // This may only be created once.
-        constructor(args: IConfig);
+        constructor(args: Config);
         // Do not use the constructed SchemaFiles object until init() resolves.
         init() : Promise<void>;
         // Loads the schemas for the types you will be using.
@@ -34,7 +35,7 @@ declare module "tv4-via-typenames-node" {
         loadRequiredSchema(query_typenames : string | string[]) : Promise<tv4vtn.LoadSchemaResultIndex>;
         // Validates an instance of a type against its schema which previously loaded via loadRequiredSchema().
         validate(typename, instance) : tv4.MultiResult;
-                
+
         test: TestFunctions;
     }
 }

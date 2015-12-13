@@ -1,29 +1,11 @@
-/// <reference path='../../typings/tv4-via-typenames-node/tv4-via-typenames-node.d.ts' />
-/// <reference path='../../typings/tv4-via-typenames/tv4-via-typenames.d.ts' />
 /// <reference path='../../typings/node/node.d.ts' />
+/// <reference path='../../typings/json-file/json-file.d.ts' />
 /// <reference path="../../typings/es6-promise/es6-promise.d.ts" />
-var fs = require('fs');
+/// <reference path='../../typings/tv4-via-typenames/tv4-via-typenames.d.ts' />
+/// <reference path='../../typings/tv4-via-typenames-node/tv4-via-typenames-node.d.ts' />
 var path = require('path');
+var json_file = require('json-file');
 var tv4vtn = require('tv4-via-typenames');
-// TODO: find proper home for this general function
-function readJSONFile(filename) {
-    return new Promise(function (resolve, reject) {
-        fs.readFile(filename, { "encoding": "utf-8" }, function (error, data) {
-            if (error) {
-                reject(error);
-            }
-            else {
-                try {
-                    var obj = JSON.parse(data);
-                    resolve({ filename: filename, obj: obj });
-                }
-                catch (error) {
-                    reject(error);
-                }
-            }
-        });
-    });
-}
 var SchemaFiles = (function () {
     // This may only be created once.
     function SchemaFiles(args) {
@@ -47,13 +29,8 @@ var SchemaFiles = (function () {
     };
     SchemaFiles.prototype.readSchemaFileFromTypename = function (typename) {
         var filename = SchemaFiles.getSchemaFilenameFromTypename(typename);
-        return readJSONFile(filename).then(function (result) {
-            return { filename: result.filename, schema: result.obj };
-        }, 
-        // without this onRejected handler, the rejection doesn't get passed to the caller!
-        // without this onRejected handler, the rejection doesn't get passed to the caller!
-        function (error) {
-            throw error;
+        return json_file.readJSONFile(filename).then(function (result) {
+            return { filename: result.filename, schema: result.contents };
         });
     };
     // Find the types referenced by the schema for the given typenames.

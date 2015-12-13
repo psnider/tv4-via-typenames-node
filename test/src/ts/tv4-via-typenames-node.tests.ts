@@ -28,7 +28,7 @@ describe('tv4-via-typenames-node', function () {
 
 
     describe('init', function () {
-        
+
         it("+ should load Draft-04 schema", function (done) {
             schema_files.init().then(
                 () => {
@@ -38,31 +38,31 @@ describe('tv4-via-typenames-node', function () {
                 (error) => {done(error);}
             );
         });
-        
+
     });
 
 
     describe('getSchemaFilenameFromTypename', function () {
-        
+
         it("+ should get the filename for a typename's schema", function () {
             expect(schema_files.test.getSchemaFilenameFromTypename('A')).to.equal('./test/data/schemas/A.schema.json');
         });
-        
+
     });
 
 
     describe('getTypenameFromSchemaFilename', function () {
-        
+
         it("+ should get the filename for a typename's schema", function () {
             debugger
             expect(schema_files.test.getTypenameFromSchemaFilename('./test/data/schemas/A.schema.json')).to.equal('A');
         });
-        
+
     });
 
 
     describe('loadRequiredSchema', function () {
-                        
+
         it("+ should load a valid simple schema without references to other schema", function (done) {
             schema_files.loadRequiredSchema('UUID').then(
                 (result : tv4vtn.LoadSchemaResultIndex) => {
@@ -77,8 +77,8 @@ describe('tv4-via-typenames-node', function () {
                 }
             );
         });
-        
-        
+
+
         it("+ should return an error for an invalid schema", function (done) {
             schema_files.loadRequiredSchema('test-invalid-type').then(
                 (result : tv4vtn.LoadSchemaResultIndex) => {
@@ -90,8 +90,8 @@ describe('tv4-via-typenames-node', function () {
                 }
             );
         });
-        
-        
+
+
         it("+ should not load an invalid schema", (done) => {
             expect(schema_files.hasSchema('test-invalid-type')).to.be.false;
             schema_files.loadRequiredSchema('test-invalid-type').then(
@@ -112,11 +112,11 @@ describe('tv4-via-typenames-node', function () {
                     done(new Error('test-invalid-type should have failed'));
                 },
                 (error) => {
-                    expect(error.message).to.equal("ENOENT, open './test/data/schemas/test-no-schema-file.schema.json'");
+                    expect(error.message).to.equal("ENOENT: no such file or directory, open './test/data/schemas/test-no-schema-file.schema.json'");
                     done();
                 }
             );
-        });    
+        });
 
     });
 
@@ -133,9 +133,7 @@ describe('tv4-via-typenames-node', function () {
             }
             tv4vtn.validate = cached;
         });
-                
-    });        
+
+    });
 
 });
-
-
