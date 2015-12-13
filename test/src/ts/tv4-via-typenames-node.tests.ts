@@ -54,7 +54,6 @@ describe('tv4-via-typenames-node', function () {
     describe('getTypenameFromSchemaFilename', function () {
 
         it("+ should get the filename for a typename's schema", function () {
-            debugger
             expect(schema_files.test.getTypenameFromSchemaFilename('./test/data/schemas/A.schema.json')).to.equal('A');
         });
 
@@ -112,7 +111,10 @@ describe('tv4-via-typenames-node', function () {
                     done(new Error('test-invalid-type should have failed'));
                 },
                 (error) => {
-                    expect(error.message).to.equal("ENOENT: no such file or directory, open './test/data/schemas/test-no-schema-file.schema.json'");
+                    // message has been:
+                    // ENOENT: no such file or directory, open './test/data/schemas/test-no-schema-file.schema.json'");
+                    expect(error.message).to.exist
+                    console.log('error.message=' + error.message)
                     done();
                 }
             );
