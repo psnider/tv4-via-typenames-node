@@ -29,9 +29,12 @@
     "name": "Peter Snider"
   },
   "license": "MIT",
-  "dependencies": {
-    "json-file": "git+ssh://git@github.com/psnider/json-file.git",
+  "dependencies-from-npm": {
     "tv4-via-typenames": "^0.1.4"
+  },
+  "dependencies": {
+    "json-file": "git+https://git@github.com/psnider/json-file.git",
+    "tv4-via-typenames": "git+https://git@github.com/psnider/tv4-via-typenames.git"
   },
   "files": [
     "typings/tv4-via-typenames-node/tv4-via-typenames-node.d.ts",
