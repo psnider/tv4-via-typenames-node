@@ -111,10 +111,11 @@ describe('tv4-via-typenames-node', function () {
                     done(new Error('test-invalid-type should have failed'));
                 },
                 (error) => {
-                    // message has been:
-                    // ENOENT: no such file or directory, open './test/data/schemas/test-no-schema-file.schema.json'");
-                    expect(error.message).to.exist
-                    console.log('error.message=' + error.message)
+                    // message has been on Mac:
+                    //    ENOENT: no such file or directory, open './test/data/schemas/test-no-schema-file.schema.json'");
+                    // and on Travis-CI
+                    //    ENOENT, open './test/data/schemas/test-no-schema-file.schema.json'
+                    expect(error.message).to.match(/^ENOENT(:|,) /)
                     done();
                 }
             );

@@ -65,8 +65,10 @@ describe('tv4-via-typenames-node', function () {
             schema_files.loadRequiredSchema('test-no-schema-file').then(function (result) {
                 done(new Error('test-invalid-type should have failed'));
             }, function (error) {
-                // message has been:
-                // ENOENT: no such file or directory, open './test/data/schemas/test-no-schema-file.schema.json'");
+                // message has been locally:
+                //    ENOENT: no such file or directory, open './test/data/schemas/test-no-schema-file.schema.json'");
+                // and on Travis-CI
+                //    ENOENT, open './test/data/schemas/test-no-schema-file.schema.json'
                 expect(error.message).to.exist;
                 console.log('error.message=' + error.message);
                 done();
